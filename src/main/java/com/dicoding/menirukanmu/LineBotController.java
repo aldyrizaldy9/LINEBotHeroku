@@ -124,7 +124,7 @@ public class LineBotController
     }    
     
     private void replyToUserStik(String rToken){
-        StickerMessage stickerMessage = new StickerMessage(1, 106);
+        StickerMessage stickerMessage = new StickerMessage("1", "106");
         ReplyMessage replyMessage = new ReplyMessage(rToken, stickerMessage);
         try {
             Response<BotApiResponse> response = LineMessagingServiceBuilder
