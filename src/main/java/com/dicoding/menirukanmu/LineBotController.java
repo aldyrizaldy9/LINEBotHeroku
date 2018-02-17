@@ -128,7 +128,7 @@ public class LineBotController
         ReplyMessage replyMessage = new ReplyMessage(rToken, stickerMessage);
         try {
             Response<BotApiResponse> response = LineMessagingServiceBuilder
-                .create(ChannelAccessToken)
+                .create(lChannelAccessToken)
                 .build()
                 .replyMessage(replyMessage)
                 .execute();
