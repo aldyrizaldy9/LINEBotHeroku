@@ -7,6 +7,7 @@ import com.linecorp.bot.client.LineSignatureValidator;
 import com.linecorp.bot.model.PushMessage;
 import com.linecorp.bot.model.ReplyMessage;
 import com.linecorp.bot.model.message.TextMessage;
+import com.linecorp.bot.model.message.StickerMessage;
 import com.linecorp.bot.model.response.BotApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,7 +15,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Response;
-import com.linecorp.bot.model.message.StickerMessage;
 
 import java.io.IOException;
 
