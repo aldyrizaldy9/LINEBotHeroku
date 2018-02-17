@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import retrofit2.Response;
+import com.linecorp.bot.model.message.StickerMessage;
 
 import java.io.IOException;
 
@@ -77,7 +78,14 @@ public class LineBotController
                         replyToUser(payload.events[0].replyToken, payload.events[0].replyToken);
                     }
                     else {
-                        replyToUser(payload.events[0].replyToken, "cobaboy");
+                        // replyToUser(payload.events[0].replyToken, "cobaboy");
+                        StickerMessage stickerMessage = new StickerMessage(1, 106);
+                        ReplyMessage replyMessage = new ReplyMessage(rToken, stickerMessage);
+                        LineMessagingServiceBuilder
+                            .create(ChannelAccessToken)
+                            .build()
+                            .replyMessage(replyMessage)
+                            .execute();
                     }   
                     // try {
                     //     getMessageData(msgText, idTarget);
