@@ -68,17 +68,23 @@ public class LineBotController
 
             if (!payload.events[0].message.type.equals("text")){
                 replyToUser(payload.events[0].replyToken, "Unknown message");
-            } else {
+            } else {    
                 msgText = payload.events[0].message.text;
                 msgText = msgText.toLowerCase();
 
                 if (!msgText.contains("bot leave")){
-                    try {
-                        getMessageData(msgText, idTarget);
-                    } catch (IOException e) {
-                        System.out.println("Exception is raised ");
-                        e.printStackTrace();
+                    if (msgText.contains("token")) {
+                        replyToUser(payload.events[0].replyToken, payload.events[0].replyToken);
                     }
+                    else {
+                        replyToUser(payload.events[0].replyToken, "cobaboy");
+                    }   
+                    // try {
+                    //     getMessageData(msgText, idTarget);
+                    // } catch (IOException e) {
+                    //     System.out.println("Exception is raised ");
+                    //     e.printStackTrace();
+                    // }
                 } else {
                     if (payload.events[0].source.type.equals("group")){
                         leaveGR(payload.events[0].source.groupId, "group");
