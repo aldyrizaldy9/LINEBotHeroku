@@ -82,7 +82,7 @@ public class LineBotController
                         StickerMessage stickerMessage = new StickerMessage(1, 106);
                         ReplyMessage replyMessage = new ReplyMessage(rToken, stickerMessage);
                         LineMessagingServiceBuilder
-                            .create(ChannelAccessToken)
+                            .create(lChannelAccessToken)
                             .build()
                             .replyMessage(replyMessage)
                             .execute();
