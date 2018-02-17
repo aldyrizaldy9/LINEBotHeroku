@@ -79,7 +79,7 @@ public class LineBotController
                     }
                     else {
                         // replyToUser(payload.events[0].replyToken, "cobaboy");
-                        StickerMessage stickerMessage = new StickerMessage(1, 106);
+                        StickerMessage stickerMessage = new StickerMessage("1", 106);
                         ReplyMessage replyMessage = new ReplyMessage(rToken, stickerMessage);
                         LineMessagingServiceBuilder
                             .create(lChannelAccessToken)
