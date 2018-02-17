@@ -78,14 +78,8 @@ public class LineBotController
                         replyToUser(payload.events[0].replyToken, payload.events[0].replyToken);
                     }
                     else {
-                        // replyToUser(payload.events[0].replyToken, "cobaboy");
-                        StickerMessage stickerMessage = new StickerMessage("1", "106");
-                        ReplyMessage replyMessage = new ReplyMessage(payload.events[0].replyToken, stickerMessage);
-                        LineMessagingServiceBuilder
-                            .create(lChannelAccessToken)
-                            .build()
-                            .replyMessage(replyMessage)
-                            .execute();
+                        replyToUserStik(payload.events[0].replyToken);
+
                     }   
                     // try {
                     //     getMessageData(msgText, idTarget);
@@ -127,6 +121,22 @@ public class LineBotController
             System.out.println("Exception is raised ");
             e.printStackTrace();
         }
+    }    
+    
+    private void replyToUserStik(String rToken){
+        StickerMessage stickerMessage = new StickerMessage(1, 106);
+        ReplyMessage replyMessage = new ReplyMessage(rToken, stickerMessage);
+        try {
+            Response<BotApiResponse> response = LineMessagingServiceBuilder
+                .create(ChannelAccessToken)
+                .build()
+                .replyMessage(replyMessage)
+                .execute();
+            System.out.println("Reply Message: " + response.code() + " " + response.message());
+        } catch (IOException e) {
+            System.out.println("Exception is raised ");
+            e.printStackTrace();
+        }
     }
 
     private void pushMessage(String sourceId, String txt){
@@ -144,6 +154,7 @@ public class LineBotController
             e.printStackTrace();
         }
     }
+    
 
     private void leaveGR(String id, String type){
         try {
